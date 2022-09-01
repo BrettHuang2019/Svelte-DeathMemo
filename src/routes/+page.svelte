@@ -3,6 +3,8 @@
     import Post from '../lib/Post.svelte'
     import { readable, get } from 'svelte/store'
     import supabase from '$lib/supabase'
+    import SignUp from '../lib/SignUp.svelte';
+    import Login from '../lib/Login.svelte';
 
     // export let data;
     const posts = readable(null, (set) => {
@@ -26,6 +28,10 @@
 </script>
 
 <h1>Hello and welcome to my site!</h1>
+
+<Login />
+
+<SignUp />
 
 <CreatePost />
 
