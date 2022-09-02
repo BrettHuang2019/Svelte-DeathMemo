@@ -3,8 +3,12 @@
     import Post from '../lib/Post.svelte'
     import { readable, get } from 'svelte/store'
     import supabase from '$lib/supabase'
+    import {getUser} from '$lib/services'
     import SignUp from '../lib/SignUp.svelte';
     import Login from '../lib/Login.svelte';
+    import {currentEmail, isOverlayOpen} from '$lib/stores.js'
+    import Overlay from '../lib/Overlay.svelte';
+    
 
     // export let data;
     const posts = readable(null, (set) => {
@@ -25,15 +29,26 @@
 
         return ()=> supabase.removeSubscription(subscription);
     })
+
+    // currentEmail.set(getUser().email);
 </script>
 
 <h1>Hello and welcome to my site!</h1>
+<p>Welcome, {$currentEmail}</p>
 
-<Login />
+<button class="btn" on:click={()=>{
+    isOverlayOpen.set(true);
+}}>Create Post</button>
 
-<SignUp />
+{#if $isOverlayOpen}
+    <Overlay>
+        <CreatePost />
+    </Overlay>
+{/if}
 
-<CreatePost />
+<!-- <Login /> -->
+
+<!-- <SignUp /> -->
 
 <!-- {#each data.data as post}
     <Post {...post} />
