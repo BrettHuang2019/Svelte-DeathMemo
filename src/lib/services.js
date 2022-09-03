@@ -19,10 +19,10 @@ export async function signOut() {
   return { data: !error, error }
 }
 
-export async function createPost({title, content, user}) { // user is user's email
+export async function createPost({title, content, user, type}) { // user is user's email
     const {data, error} = await supabase
       .from('posts')
-      .insert({title, content, user})
+      .insert({title, content, user, type})
     return {data, error}
 }
 
