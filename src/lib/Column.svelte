@@ -8,7 +8,7 @@
   export let posts
 </script>
 
-<div class="w-1/3 h-auto min-h-screen {columnColor} flex flex-col rounded-xl">
+<div class="sm:w-1/3 h-auto min-h-screen {columnColor} flex flex-col rounded-xl w-full">
   <p class="text-white text-3xl mx-auto mt-5 card-title">{title}</p>
   {#if posts}
     {#each posts as post, index}

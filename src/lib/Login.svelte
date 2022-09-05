@@ -1,6 +1,5 @@
 <script>
-  import Error from '$lib/Error.svelte'
-  import { signUp, signIn, signOut, getUser } from '$lib/services'
+  import { signIn, getUser } from '$lib/services'
   import { browser } from '$app/environment'
   import { goto } from '$app/navigation'
   import { fade } from 'svelte/transition'
@@ -24,7 +23,6 @@
       const { error } = await signIn({ email, password })
       if (error) {
         throw error
-        alert('Check your email!')
       }
     } catch (error) {
       alert(error.error_description || error.message)

@@ -1,11 +1,9 @@
 <script>
   import Error from '$lib/Error.svelte'
-  import { signUp, signOut, getUser } from '$lib/services'
+  import { signUp, getUser } from '$lib/services'
   import { browser } from '$app/environment'
   import { goto } from '$app/navigation'
   import { fade } from 'svelte/transition'
-
-  // export let posts, error
 
   // redirect if not already logged in
   const user = getUser()
@@ -33,7 +31,6 @@
       const { error } = await signUp({ email, password: password1 })
       if (error) {
         throw error
-        alert('Check your email!')
       }
     } catch (error) {
       alert(error.error_description || error.message)
@@ -45,7 +42,7 @@
 </script>
 
 <section class="h-screen" transition:fade>
-  <div class="container px-6 py-12 h-full">
+  <div class="container px-6 py-12 h-full mx-auto">
     <div
       class="flex justify-center items-center flex-wrap h-full g-6 text-gray-800"
     >

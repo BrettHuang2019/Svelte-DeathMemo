@@ -50,7 +50,7 @@
     <div>
       <button
         type="button"
-        class="inline-flex w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+        class="inline-flex w-full rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
         id="menu-button"
         aria-expanded="true"
         aria-haspopup="true"
@@ -76,7 +76,7 @@
 
     {#if isExpanded}
       <div
-        class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+        class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-blue-600 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
         role="menu"
         aria-orientation="vertical"
         aria-labelledby="menu-button"
@@ -87,21 +87,21 @@
           <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
           <a
             href="#"
-            class="text-gray-700 block px-4 py-2 text-sm"
+            class="text-white block px-4 py-2 text-sm hover:bg-blue-800"
             role="menuitem"
             tabindex="-1"
             on:click={() => selectType(0, "Before Death")}>Before Death</a
           >
           <a
             href="#"
-            class="text-gray-700 block px-4 py-2 text-sm"
+            class="text-white block px-4 py-2 text-sm hover:bg-blue-800"
             role="menuitem"
             tabindex="-1"
             on:click={() => selectType(1, "During Death")}>During Death</a
           >
           <a
             href="#"
-            class="text-gray-700 block px-4 py-2 text-sm"
+            class="text-white block px-4 py-2 text-sm hover:bg-blue-800"
             role="menuitem"
             tabindex="-1"
             on:click={() => selectType(2, "After Death")}>After Death</a
@@ -119,8 +119,8 @@
   />
   <button
     type="submit"
-    class="inline-flex items-center px-5 py-2.5 text-2xl font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800"
+    class="inline-flex items-center px-5 py-2.5 text-xl font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800"
   >
-    Publish post
+    Publish
   </button>
 </form>

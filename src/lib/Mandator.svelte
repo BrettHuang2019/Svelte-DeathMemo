@@ -1,9 +1,12 @@
 <script>
   import { mandatorStore, currentBoard } from '$lib/stores.js'
-  export let id, mandatary, mandator, created_at
-  export let closeExpand = ()=>{}
+  export let id = undefined,
+    mandatary = undefined,
+    mandator = undefined,
+    created_at = undefined
+  export let closeExpand = () => {}
 
-  function changeBoard(){
+  function changeBoard() {
     currentBoard.set(mandator)
     closeExpand()
   }
@@ -11,7 +14,7 @@
 
 <a
   href="#"
-  class="text-gray-700 block px-4 py-2 text-sm"
+  class="block px-4 py-2 text-sm text-white bg-amber-500 hover:bg-amber-600"
   role="menuitem"
   tabindex="-1"
   on:click={changeBoard}>{mandator}</a

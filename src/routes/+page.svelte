@@ -3,13 +3,7 @@
   import CreateMandate from '$lib/CreateMandate.svelte'
   import { readable, get } from 'svelte/store'
   import supabase from '$lib/supabase'
-  import {
-    getUser,
-    getPosts,
-    signOut,
-    getMandate,
-    getMandator,
-  } from '$lib/services'
+  import { getUser, signOut, getMandator } from '$lib/services'
   import {
     currentEmail,
     isOverlayOpen,
@@ -54,7 +48,6 @@
 
   let mandataryArr
   function fetchMandatary() {
-    console.log('start')
     mandataryArr = readable(null, (set) => {
       supabase
         .from('mandate')
@@ -84,7 +77,7 @@
   async function fetchMadator() {
     const result = await getMandator()
     if (result.data) {
-      mandatorStore.set(result.data)
+      mandatorStore.set([{mandator: user.email}, ...result.data])
     }
   }
 
@@ -168,7 +161,7 @@
   {/if}
 {/if}
 
-<div class="flex">
+<div class="sm:flex">
   <Column
     posts={$posts}
     columnType={0}
