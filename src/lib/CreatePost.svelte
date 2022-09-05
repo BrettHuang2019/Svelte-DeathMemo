@@ -1,14 +1,13 @@
 <script>
   import Error from '$lib/Error.svelte'
   import { createPost, getUser } from '$lib/services'
-  import { isOverlayOpen } from '$lib/stores.js'
+  import { isOverlayOpen, isCreatePostOpen } from '$lib/stores.js'
   import { slide } from 'svelte/transition'
 
   let postTitle, postContent
   let postType = 0 
   let postTypeStr = "Before Death"
   function handleCreatePost() {
-    console.log(postType);
     createPost({
       user: getUser().email,
       title: postTitle,
@@ -16,6 +15,7 @@
       type: postType,
     })
     isOverlayOpen.set(false)
+    isCreatePostOpen.set(false)
   }
 
   let isExpanded = false
@@ -35,7 +35,7 @@
 <form class="w-96" on:submit|preventDefault={handleCreatePost}>
   <label
     for="message"
-    class="block mb-2 text-sm font-medium text-3xl text-white-900 dark:text-gray-400"
+    class="block mb-2 font-medium text-xl text-white-900 dark:text-gray-400"
     >New Memo</label
   >
   <input

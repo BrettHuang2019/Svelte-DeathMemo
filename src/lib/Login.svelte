@@ -3,6 +3,7 @@
   import { signUp, signIn, signOut, getUser } from '$lib/services'
   import { browser } from '$app/environment'
   import { goto } from '$app/navigation'
+  import { fade } from 'svelte/transition'
 
   // export let posts, error
 
@@ -11,10 +12,6 @@
   if (browser && user) {
     console.log(user)
     goto('/')
-  }
-  async function handleSignout() {
-    await signOut()
-    goto('/login')
   }
 
   let loading = false
@@ -25,22 +22,25 @@
     try {
       loading = true
       const { error } = await signIn({ email, password })
-      if (error) throw error
-      alert('Check your email!')
+      if (error) {
+        throw error
+        alert('Check your email!')
+      }
     } catch (error) {
       alert(error.error_description || error.message)
     } finally {
       loading = false
+      goto('/')
     }
   }
 </script>
 
-<section class="h-screen">
-  <div class="container px-6 py-12 h-full">
+<section class="h-screen" transition:fade>
+  <div class="container px-6 py-12 h-full mx-auto">
     <div
       class="flex justify-center items-center flex-wrap h-full g-6 text-gray-800"
     >
-      <div class="md:w-8/12 lg:w-5/12 lg:ml-20">
+    <div class="md:w-8/12 lg:w-5/12 lg:ml-20">
         <form on:submit|preventDefault={handleLogin}>
           <!-- Email input -->
           <div class="mb-6">
@@ -74,6 +74,10 @@
             Log in
           </button>
         </form>
+
+        <div class="text-sky-600 mt-1">
+          <a href="/signup">Sign up</a>
+        </div>
       </div>
     </div>
   </div>

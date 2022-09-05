@@ -3,7 +3,7 @@
   import { signUp, signIn, signOut, getUser } from '$lib/services'
   import { browser } from '$app/environment'
   import { goto } from '$app/navigation'
-  import Login from '../../lib/Login.svelte';
+  import SignUp from '$lib/SignUp.svelte';
 </script>
 
-<Login/>
+<SignUp/>
