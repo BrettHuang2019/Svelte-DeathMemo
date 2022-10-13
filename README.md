@@ -2,6 +2,7 @@
 # A web app demo to write down everything about death
 
 [`Project-Demo`](https://death-memo.vercel.app/)
+Test Account: tom@tr.tr / 000000
 
 ------------------Below is Sveltekit default readme-----------------
 
